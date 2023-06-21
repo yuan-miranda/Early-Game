@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Scanner;
 
-public class Dcoder
+public class Hypotenuse_finder
  {
    public static void main(String args[])
    { 

@@ -1,7 +1,8 @@
 import java.util.Scanner;
 import java.util.*;
 
-public class Dcoder{
+public class Quartile_Decile_Percentile_UD
+{
     public static void main(String[] args){
         double Opr;
         double n;

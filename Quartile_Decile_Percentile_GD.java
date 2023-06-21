@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 
- public class Dcoder
+ public class Quartile_Decile_Percentile_GD
  {
    public static void main(String args[])
    { 
