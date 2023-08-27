@@ -6,29 +6,33 @@ public class PythagorianTheorem {
 
         // Computation 
         System.out.print("What side are you looking for? A, B or C: ");
-        char input = getUserCharInput(scanner);
+        char input = readChar(scanner);
+        
+        double a;
+        double b;
+        double c;
 
         if (input == 'a'|| input == 'A') {
-            double c = readDoubleFromUser(scanner, "What is your Hypotenuse / C = ");
-            double b = readDoubleFromUser(scanner, "What is your Opposite / B = ");
+            c = readDouble(scanner, "What is your Hypotenuse / C = ");
+            b = readDouble(scanner, "What is your Opposite / B = ");
 
-            double a = Math.sqrt((c * c) - (b * b));
+            a = Math.sqrt((c * c) - (b * b));
             System.out.println("Your Base is = " + a);
             
             
         } else if (input == 'b' || input == 'B') {
-            double a = readDoubleFromUser(scanner, "What is your base / A = ");
-            double c = readDoubleFromUser(scanner, "What is your Hypotenuse / C = ");
+            a = readDouble(scanner, "What is your base / A = ");
+            c = readDouble(scanner, "What is your Hypotenuse / C = ");
 
-            double b = Math.sqrt((a * a) - (c * c));
+            b = Math.sqrt((a * a) - (c * c));
             System.out.println("Opposite is = " + b);
             
             
         } else if (input == 'c'|| input == 'C') {
-            double a = readDoubleFromUser(scanner, "What is your Base / A = ");
-            double b = readDoubleFromUser(scanner, "What is your Opposite / B = ");
+            a = readDouble(scanner, "What is your Base / A = ");
+            b = readDouble(scanner, "What is your Opposite / B = ");
 
-            double c = Math.sqrt((a * a) + (b * b));
+            c = Math.sqrt((a * a) + (b * b));
             System.out.println("Your Hypotenuse is = " + c);
             
             
@@ -40,12 +44,12 @@ public class PythagorianTheorem {
     }
 
     // Only Trinagle's side
-    public static char getUserCharInput(Scanner scanner) {
+    public static char readChar(Scanner scanner) {
         while (true) {
             String input = scanner.nextLine();
             if (input.length() == 1) {
                 char character = input.charAt(0);
-                if (isValidCharacter(character)) {
+                if (validChar(character)) {
                     return character;
                 }
             }
@@ -54,7 +58,7 @@ public class PythagorianTheorem {
     }
 
     // Length of the Triangle's Side
-    public static double readDoubleFromUser(Scanner scanner, String prompt) {
+    public static double readDouble(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine();
@@ -67,7 +71,7 @@ public class PythagorianTheorem {
     }
 
     // Allowed Char of Triangle's Side
-    public static boolean isValidCharacter(char character) {
+    public static boolean validChar(char character) {
         return (character == 'a' || character == 'b' || character == 'c' || character == 'A' || character == 'B' || character == 'C');
     }
 }
