@@ -4,29 +4,37 @@ public class aint {
     public static void main(String[] args) {
         char input = getUserCharInput("What side are you looking for? A, B or C");
 
-        if (input == 'a') {
+        // Computation
+        if (input == 'a' || input == 'A') {
             double c = readDoubleFromUser("What is your Hypotenuse / C = ");
             double b = readDoubleFromUser("What is your Opposite / B = ");
 
             double a = Math.sqrt((c * c) - (b * b));
             JOptionPane.showMessageDialog(null, "Your Base is = " + a);
-        } else if (input == 'b') {
+
+            
+        } else if (input == 'b' || input == 'B') {
             double a = readDoubleFromUser("What is your base / A = ");
             double c = readDoubleFromUser("What is your Hypotenuse / C = ");
 
             double b = Math.sqrt((a * a) - (c * c));
             JOptionPane.showMessageDialog(null, "Opposite is = " + b);
-        } else if (input == 'c') {
+
+            
+        } else if (input == 'c' || input == 'C') {
             double a = readDoubleFromUser("What is your Base / A = ");
             double b = readDoubleFromUser("What is your Opposite / B = ");
 
             double c = Math.sqrt((a * a) + (b * b));
             JOptionPane.showMessageDialog(null, "Your Hypotenuse is = " + c);
+
+            
         } else {
             JOptionPane.showMessageDialog(null, "Here's your extra chromosomes... Retard.");
         }
     }
 
+    // Only Triangle's Side
     public static char getUserCharInput(String prompt) {
         while (true) {
             String input = JOptionPane.showInputDialog(prompt);
@@ -40,6 +48,7 @@ public class aint {
         }
     }
 
+    // Length of the Triangle's Side
     public static double readDoubleFromUser(String prompt) {
         while (true) {
             String input = JOptionPane.showInputDialog(prompt);
@@ -51,7 +60,8 @@ public class aint {
         }
     }
 
+    // Allowed Char of Triangle's Side
     public static boolean isValidCharacter(char character) {
-        return (character == 'a' || character == 'b' || character == 'c');
+        return (character == 'a' || character == 'b' || character == 'c' || character == 'A' || character == 'B' || character == 'C');
     }
 }
