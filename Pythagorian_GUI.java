@@ -2,30 +2,34 @@ import javax.swing.JOptionPane;
 
 public class PythagorianTheorem {
     public static void main(String[] args) {
-        char input = getUserCharInput("What side are you looking for? A, B or C");
+        char input = readChar("What side are you looking for? A, B or C");
 
+        double a;
+        double b;
+        double c;
+        
         // Computation
         if (input == 'a' || input == 'A') {
-            double c = readDoubleFromUser("What is your Hypotenuse / C = ");
-            double b = readDoubleFromUser("What is your Opposite / B = ");
+            c = readDouble("What is your Hypotenuse / C = ");
+            b = readDouble("What is your Opposite / B = ");
 
-            double a = Math.sqrt((c * c) - (b * b));
+            a = Math.sqrt((c * c) - (b * b));
             JOptionPane.showMessageDialog(null, "Your Base is = " + a);
 
             
         } else if (input == 'b' || input == 'B') {
-            double a = readDoubleFromUser("What is your base / A = ");
-            double c = readDoubleFromUser("What is your Hypotenuse / C = ");
+            a = readDouble("What is your base / A = ");
+            c = readDouble("What is your Hypotenuse / C = ");
 
-            double b = Math.sqrt((a * a) - (c * c));
+            b = Math.sqrt((a * a) - (c * c));
             JOptionPane.showMessageDialog(null, "Opposite is = " + b);
 
             
         } else if (input == 'c' || input == 'C') {
-            double a = readDoubleFromUser("What is your Base / A = ");
-            double b = readDoubleFromUser("What is your Opposite / B = ");
+            a = readDouble("What is your Base / A = ");
+            b = readDouble("What is your Opposite / B = ");
 
-            double c = Math.sqrt((a * a) + (b * b));
+            c = Math.sqrt((a * a) + (b * b));
             JOptionPane.showMessageDialog(null, "Your Hypotenuse is = " + c);
 
             
@@ -35,12 +39,12 @@ public class PythagorianTheorem {
     }
 
     // Only Triangle's Side
-    public static char getUserCharInput(String prompt) {
+    public static char readChar(String prompt) {
         while (true) {
             String input = JOptionPane.showInputDialog(prompt);
             if (input != null && input.length() == 1) {
                 char character = input.charAt(0);
-                if (isValidCharacter(character)) {
+                if (validChar(character)) {
                     return character;
                 }
             }
@@ -49,7 +53,7 @@ public class PythagorianTheorem {
     }
 
     // Length of the Triangle's Side
-    public static double readDoubleFromUser(String prompt) {
+    public static double readDouble(String prompt) {
         while (true) {
             String input = JOptionPane.showInputDialog(prompt);
             try {
@@ -61,7 +65,7 @@ public class PythagorianTheorem {
     }
 
     // Allowed Char of Triangle's Side
-    public static boolean isValidCharacter(char character) {
+    public static boolean validChar(char character) {
         return (character == 'a' || character == 'b' || character == 'c' || character == 'A' || character == 'B' || character == 'C');
     }
 }
