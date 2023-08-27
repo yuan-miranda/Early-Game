@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class aint {
+public class PythagorianTheorem {
     public static void main(String[] args) {
         char input = getUserCharInput("What side are you looking for? A, B or C");
 
