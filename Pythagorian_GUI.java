@@ -1,61 +1,58 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-public class PythagoreanTheorem {
+public class aint {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        char input = getUserCharInput("What side are you looking for? A, B or C");
 
-        System.out.print("Side to calculate (A, B, or C): ");
-        char side = gC(sc);
-        double a, b, c;
-
-        switch (Character.toLowerCase(side)) {
-            case 'a':
-                c = rD(sc, "Hypotenuse (C) = ");
-                b = rD(sc, "Opposite (B) = ");
-                a = Math.sqrt(c * c - b * b);
-                System.out.println("Base (A) = " + a);
-                break;
-
-            case 'b':
-                a = rD(sc, "Base (A) = ");
-                c = rD(sc, "Hypotenuse (C) = ");
-                b = Math.sqrt(a * a - c * c);
-                System.out.println("Opposite (B) = " + b);
-                break;
-
-            case 'c':
-                a = rD(sc, "Base (A) = ");
-                b = rD(sc, "Opposite (B) = ");
-                c = Math.sqrt(a * a + b * b);
-                System.out.println("Hypotenuse (C) = " + c);
-                break;
-
-            default:
-                System.out.println("Invalid input.");
+        // Computation
+        if (input == 'a' || input == 'A') {
+            double c = readDoubleFromUser("What is your Hypotenuse / C = ");
+            double b = readDoubleFromUser("What is your Opposite / B = ");
+            double a = Math.sqrt((c * c) - (b * b));
+            JOptionPane.showMessageDialog(null, "Your Base is = " + a);
+            
+        } else if (input == 'b' || input == 'B') {
+            double a = readDoubleFromUser("What is your base / A = ");
+            double c = readDoubleFromUser("What is your Hypotenuse / C = ");
+            double b = Math.sqrt((a * a) - (c * c));
+            JOptionPane.showMessageDialog(null, "Opposite is = " + b);
+            
+        } else if (input == 'c' || input == 'C') {
+            double a = readDoubleFromUser("What is your Base / A = ");
+            double b = readDoubleFromUser("What is your Opposite / B = ");
+            double c = Math.sqrt((a * a) + (b * b));
+            JOptionPane.showMessageDialog(null, "Your Hypotenuse is = " + c);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Here's your extra chromosomes... Retard.");
         }
-
-        sc.close();
     }
-
-    public static char gC(Scanner sc) {
+    // Only Triangle's Side
+    public static char getUserCharInput(String prompt) {
         while (true) {
-            String inp = sc.nextLine().toLowerCase();
-            if (inp.length() == 1 && "abc".contains(inp)) {
-                return inp.charAt(0);
+            String input = JOptionPane.showInputDialog(prompt);
+            if (input != null && input.length() == 1) {
+                char character = input.charAt(0);
+                if (isValidCharacter(character)) {
+                    return character;
+                }
             }
-            System.out.println("Enter a Side");
+            JOptionPane.showMessageDialog(null, "Enter a side of a triangle.");
         }
     }
-
-    public static double rD(Scanner sc, String prompt) {
+    // Length of the Triangle's Side
+    public static double readDoubleFromUser(String prompt) {
         while (true) {
-            System.out.print(prompt);
-            String inp = sc.nextLine();
+            String input = JOptionPane.showInputDialog(prompt);
             try {
-                return Double.parseDouble(inp);
+                return Double.parseDouble(input);
             } catch (NumberFormatException e) {
-                System.out.println("Enter a number.");
+                JOptionPane.showMessageDialog(null, "Enter a number.");
             }
         }
+    }
+    // Allowed Char of Triangle's Side
+    public static boolean isValidCharacter(char character) {
+        return (character == 'a' || character == 'b' || character == 'c' || character == 'A' || character == 'B' || character == 'C');
     }
 }
