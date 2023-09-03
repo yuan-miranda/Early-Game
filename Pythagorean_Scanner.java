@@ -1,77 +1,61 @@
 import java.util.Scanner;
 
-public class PythagorianTheorem {
+public class PythagoreanTheorem {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        // Computation 
-        System.out.print("What side are you looking for? A, B or C: ");
-        char input = readChar(scanner);
-        
-        double a;
-        double b;
-        double c;
+        System.out.print("Side to calculate (A, B, or C): ");
+        char side = gC(sc);
+        double a, b, c;
 
-        if (input == 'a'|| input == 'A') {
-            c = readDouble(scanner, "What is your Hypotenuse / C = ");
-            b = readDouble(scanner, "What is your Opposite / B = ");
+        switch (Character.toLowerCase(side)) {
+            case 'a':
+                c = rD(sc, "Hypotenuse (C) = ");
+                b = rD(sc, "Opposite (B) = ");
+                a = Math.sqrt(c * c - b * b);
+                System.out.println("Base (A) = " + a);
+                break;
 
-            a = Math.sqrt((c * c) - (b * b));
-            System.out.println("Your Base is = " + a);
-            
-            
-        } else if (input == 'b' || input == 'B') {
-            a = readDouble(scanner, "What is your base / A = ");
-            c = readDouble(scanner, "What is your Hypotenuse / C = ");
+            case 'b':
+                a = rD(sc, "Base (A) = ");
+                c = rD(sc, "Hypotenuse (C) = ");
+                b = Math.sqrt(a * a - c * c);
+                System.out.println("Opposite (B) = " + b);
+                break;
 
-            b = Math.sqrt((a * a) - (c * c));
-            System.out.println("Opposite is = " + b);
-            
-            
-        } else if (input == 'c'|| input == 'C') {
-            a = readDouble(scanner, "What is your Base / A = ");
-            b = readDouble(scanner, "What is your Opposite / B = ");
+            case 'c':
+                a = rD(sc, "Base (A) = ");
+                b = rD(sc, "Opposite (B) = ");
+                c = Math.sqrt(a * a + b * b);
+                System.out.println("Hypotenuse (C) = " + c);
+                break;
 
-            c = Math.sqrt((a * a) + (b * b));
-            System.out.println("Your Hypotenuse is = " + c);
-            
-            
-        } else {
-            System.out.println("Here's your extra chomosomes... Retard");
+            default:
+                System.out.println("Invalid inp.");
         }
 
-        scanner.close();
+        sc.close();
     }
 
-    // Only Trinagle's side
-    public static char readChar(Scanner scanner) {
+    public static char gC(Scanner sc) {
         while (true) {
-            String input = scanner.nextLine();
-            if (input.length() == 1) {
-                char character = input.charAt(0);
-                if (validChar(character)) {
-                    return character;
-                }
+            String inp = sc.nextLine().toLowerCase();
+            if (inp.length() == 1 && "abc".contains(inp)) {
+                return inp.charAt(0);
             }
-            System.out.println("Enter a side of a triangle.");
+            System.out.println("Enter a Side");
         }
     }
 
-    // Length of the Triangle's Side
-    public static double readDouble(Scanner scanner, String prompt) {
+    public static double rD(Scanner sc, String prompt) {
         while (true) {
             System.out.print(prompt);
-            String input = scanner.nextLine();
+            String inp = sc.nextLine();
             try {
-                return Double.parseDouble(input);
+                return Double.parseDouble(inp);
             } catch (NumberFormatException e) {
                 System.out.println("Enter a number.");
             }
         }
-    }
-
-    // Allowed Char of Triangle's Side
-    public static boolean validChar(char character) {
-        return (character == 'a' || character == 'b' || character == 'c' || character == 'A' || character == 'B' || character == 'C');
     }
 }
