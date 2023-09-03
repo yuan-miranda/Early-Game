@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
 public class PythagoreanTheorem {
+    private static double a, b, c;
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Side to calculate (A, B, or C): ");
         char side = gC(sc);
-        double a, b, c;
 
         switch (Character.toLowerCase(side)) {
             case 'a':
@@ -31,7 +32,7 @@ public class PythagoreanTheorem {
                 break;
 
             default:
-                System.out.println("Invalid inp.");
+                System.out.println("Invalid input.");
         }
 
         sc.close();
@@ -47,9 +48,9 @@ public class PythagoreanTheorem {
         }
     }
 
-    public static double rD(Scanner sc, String prompt) {
+    public static double rD(Scanner sc, String pr) {
         while (true) {
-            System.out.print(prompt);
+            System.out.print(pr);
             String inp = sc.nextLine();
             try {
                 return Double.parseDouble(inp);
